@@ -4,6 +4,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 
+st.set_page_config(
+     page_title="Essentials price Analysis",
+     page_icon="📊",
+     layout="centered",
+ )
+
+
+
+
 places=["CHENNAI","DELHI","LUCKNOW","SHIMLA","MUMBAI","AHMEDABAD","KOLKATA","PATNA","GUWAHATI","PORT BLAIR","HYDERABAD"]
 
 st.title('An Analysis on the Prices of Essential Commodities in Indian cities')
