@@ -7,29 +7,33 @@ from sklearn.preprocessing import MinMaxScaler
 places=["CHENNAI","DELHI","LUCKNOW","SHIMLA","MUMBAI","AHMEDABAD","KOLKATA","PATNA","GUWAHATI","PORT BLAIR","HYDERABAD"]
 
 st.title('An Analysis on the Prices of Essential Commodities in Indian cities')
+
+
 st.markdown("""
-- An intro about inflation and why i took this project
+<img src="https://images.unsplash.com/photo-1572402123736-c79526db405a" width="100%">
+""", unsafe_allow_html=True)
 
-- About the dataset, and the department, the data collected (column names)
 
-- Introduce the various questions here. List general ideas on COVID, petrol and make some assumptions on the answers.
+st.markdown("""
+
+I have been hearing about Inflation for the past few Months, and I have been curious as to how much the prices
+of essential commodities have actually increased. Therefore, I decided to put my analytical skills to the test as an aspiring Data scientist
+to come up with some hypothesis and answer them myself, verifying the hypothesis in the process. I have learned some interesting facts about the
+city I have been living all my life, and also this analysis has broken some of my preconceived notions. Go thourugh some of the questions I answered in my analysis
+in the tabs below.
+
 
 ### Questions I have on the dataset:
 1. Which is more costly? Living in a tier 1 city (Chennai, Delhi, Mumbai) or a hill station or a island like port blair? How much is it better than the rest of the country? (quantify it)
-    #### My Initial Hypothesis:
-    - My initial Hypothesis is that a tier 1 city(metro cities) would be costly to live in than a tier 2 city(non metro cities)
-    - Living in Islands should be costlier than being in the main land.
-    - Hill stations would be equivalent/ expensive when compared to tier 1 cities
+    
 2. How does the value of petrol affect the cost of prices of various kind?
-    #### My Initial Hypothesis: 
-    - Fuel prices have increased over the years, but the pandemic had drastically sky rocketed the cost of petrol. So, most of the commodities should follow the trend as well.
-    - If the cost of commodity is well aligned with the cost of fuel, then fuel prices most likely cause/inflence the cost of commodities.
+    
 3. What are the effects of pre and post covid rates? 
-    #### My Initial Hypothesis: 
-    - Prices have definitely increased (I am obviously not living under a rock!), but I assume it has taken a hit in all the products.
-    - There is regular inflation, but I have no idea as to how much prices have changed in the essential commodity segment. I predict that most of the products have increased in prices.
+    
 4. Which food item has the highest variation of cost beteen cities on average? Did it increase over the years, or is it getting smaller?
+
 5. Which commodity has increased in price by a lot? quantify it.
+
 6. Which of the vegetables (potato, tomato, onion) has a lot of fluctuations? Is it city dependent?
 
 #### Click on the tabs below to view my analysis to answer the above questions, and verify my hypothesis.
@@ -42,19 +46,88 @@ tabs=st.tabs(tab_titles)
 with tabs[0]:
     st.header('Extraction of dataset')
     st.markdown("""
+    
+    For this analysis, we would require the use of both the prices dataset and the fuel prices for the years 2014 to 2022. 
+    Below follows a brief description of the extraction process.
+
     ---
-    - Write about the extraction of the prices dataset
-    - Write about the extraction of the  petrol prices dataset.
+
+    """)
+
+    #About commodity dataset
+    col_1a,col_1b=st.columns(2)
+    col_1a.markdown("""
+    <img src="https://images.unsplash.com/photo-1489806149968-aee262986b40" width="100%">
+    """, unsafe_allow_html=True)
+    col_1b.markdown("""
+    ## The Essential Commodity Price Dataset
+    """)
+    st.text("")
+    st.markdown("""
+
+    There is a database provided by the [Department of Consumer Affairs](https://consumeraffairs.nic.in/), 
+    jointly developed by the [National Informatics Center](https://www.nic.in/). This database has a collection of commodity prices
+    from vaious cities in India, from roughy 2010s, but has sufficient data from about the year 2014 and above.
+
+    We use the [website](https://fcainfoweb.nic.in/reports/report_menu_web.aspx) to view and extract the 
+    data from the years 2014 to 2022 (till present). As they do not provide a way to download datasets, we would have to 
+    scrape the website, using the python's requests library.
+
+    The code used to extract the dataset used in the analysis can be found [here](https://github.com/aadityarock2000/Price-history-analysis/blob/master/notebooks/price-history-v2.ipynb).
+    
+    The dataset consists of 22 commodities, listed below. I acknolwdge that the rate here is provided by the government, 
+    and hence, most of the packed essentials in the shelves of super markets would not reflect these.
+
+    ##### Commmodities discussed in the analysis.
+    """)
+
+    column_list=['Rice','Wheat','Atta (Wheat)','Gram Dal','Tur/Arhar Dal','Urad Dal','Moong Dal','Masoor Dal','Sugar',
+            'Milk','Groundnut Oil (Packed)','Mustard Oil (Packed)','Vanaspati (Packed)','Soya Oil (Packed)','Sunflower Oil (Packed)',
+            'Palm Oil (Packed)','Gur','Tea Loose','Salt Pack (Iodised)','Potato','Onion','Tomato']
+    st.write(column_list)
+    st.markdown("---")
+    # About fuel Dataset
+    col_1c,col_1d=st.columns(2)
+    col_1c.markdown("## The Indian Fuel Price Dataset")
+    col_1d.markdown("""
+    <img src="https://images.unsplash.com/photo-1611807527279-f6ac568cd4f8?" width="100%">
+    """, unsafe_allow_html=True)
+    st.text('')
+    st.markdown("""
+    A lot of talk about inflation is frequenctly followed by the discussion on fuel prices. Hence, I would also 
+    like to take that into account. However, similar to the commodity dataset, there is no ready made dataset for
+    fuel prices in India. So, I used selenium to extract prices from [this website](https://www.mypetrolprice.com/5/Petrol-price-in-Chennai)
+
+    This website is used to extract prices of petrol in the Chennai region from 2014, and since most often,
+    the prices didn't vary to a large extent (it varied mostly in terms of less than a rupee, so not that significant), 
+    we can impute the data using interpolation on both sides.
+    
+    **Click on the tabs above to move to different questions and view my analysis**
     
     """)
+
+
     
 with tabs[1]:
 
     st.header('Question 1')
     st.info("""**Living in which place is costlier? There are various places all across India selected for this analysis. 
     How much does the cheaper city *cheaper* than the most expensive one?**""")
+    
+    st.markdown("""
+    <img src="https://images.unsplash.com/photo-1561784493-88b0a3ce0c76" width="100%">
+    """, unsafe_allow_html=True)
+    st.caption('An ariel View of Chennai City.')
+    
+    st.markdown("""
+    #### My Initial Hypothesis:
+    - My initial Hypothesis is that a tier 1 city(metro cities) would be costly to live in than a tier 2 city(non metro cities)
+    - Living in Islands should be costlier than being in the main land.
+    - Hill stations would be equivalent/ expensive when compared to tier 1 cities   
+    """)
     st.markdown("""
 
+    
     ### The Approach:
 
     There are different products with different price points, so it is difficult to measure the "costliness" with just a simple sum/average of the products. 
@@ -146,6 +219,14 @@ with tabs[1]:
 with tabs[2]:
     st.header('Question 2')
     st.info("""**How does the value of petrol / gas prices affect the cost of essential items of various kind?**""")
+    
+    st.markdown("""
+    
+    #### My Initial Hypothesis: 
+    - Fuel prices have increased over the years, but the pandemic had drastically sky rocketed the cost of petrol. So, most of the commodities should follow the trend as well.
+    - If the cost of commodity is well aligned with the cost of fuel, then fuel prices most likely cause/inflence the cost of commodities.
+    
+    """)
     st.markdown("""
 
     ### The Approach:
@@ -220,6 +301,9 @@ with tabs[2]:
     col_5,col_6=st.columns(2)
 
     # col_5.pyplot(fig_a)
+    col_5.markdown("""
+        <img src="https://images.unsplash.com/photo-1572402123736-c79526db405a" width="100%">
+        """, unsafe_allow_html=True)
     col_5.caption('Insert a pic from unsplash')
 
     col_6.write("Select a commodity and a city to view its change in rate over the years, and compare it with the figure on the side")
@@ -329,6 +413,12 @@ with tabs[3]:
     st.info("""**What are the effects of pre and post covid rates? To narrow down the question, Let us answer about the quantities that have
     drastically changed in price since 2020, which wasn't seen in the past 6 years.**""")
 
+    st.markdown("""
+    #### My Initial Hypothesis: 
+    - Prices have definitely increased (I am obviously not living under a rock!), but I assume it has taken a hit in all the products.
+    - There is regular inflation, but I have no idea as to how much prices have changed in the essential commodity segment. I predict that most of the products have increased in prices.
+    
+    """)
     
     #df_month.head()
 
@@ -419,6 +509,12 @@ with tabs[4]:
     st.info("""**Which food item has the highest variation of cost beteen cities on average? Did it increase over the years, or is it getting smaller? To answer the
     question, let us compare the yearly avarage prices of commodities for the last 8 years**""")
 
+
+    st.markdown("""
+    #### My Initial Hypothesis: 
+    
+    
+    """)
     # This below code is already run and is converted to csv file.
     # yearly_std_dev=pd.DataFrame()
     # for i in range(1,23):
@@ -472,3 +568,4 @@ with tabs[4]:
     
     """)
     st.markdown(images, unsafe_allow_html=True)
+
