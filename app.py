@@ -10,8 +10,10 @@ st.set_page_config(
      layout="centered",
  )
 
-
-
+# col_00,col_01=st.columns(2)
+# col_00.write("Checkout my [Github page](https://github.com/aadityarock2000)")
+# col_01.write("Checkout my [LinkedIn](https://www.linkedin.com/in/aaditya-parthasarathy/)")
+# adding the navbar
 
 places=["CHENNAI","DELHI","LUCKNOW","SHIMLA","MUMBAI","AHMEDABAD","KOLKATA","PATNA","GUWAHATI","PORT BLAIR","HYDERABAD"]
 
@@ -41,9 +43,9 @@ in the tabs below.
     
 4. Which food item has the highest variation of cost beteen cities on average? Did it increase over the years, or is it getting smaller?
 
-5. Which commodity has increased in price by a lot? quantify it.
+    4.1. Which commodity has increased in price by a lot? (quantify it)
 
-6. Which of the vegetables (potato, tomato, onion) has a lot of fluctuations? Is it city dependent?
+5. Which of the vegetables (potato, tomato, onion) has a lot of fluctuations? Is it city dependent?
 
 #### Click on the tabs below to view my analysis to answer the above questions, and verify my hypothesis.
 """)
@@ -114,9 +116,7 @@ with tabs[0]:
     **Click on the tabs above to move to different questions and view my analysis**
     
     """)
-
-
-    
+   
 with tabs[1]:
 
     st.header('Question 1')
@@ -309,11 +309,12 @@ with tabs[2]:
 
     col_5,col_6=st.columns(2)
 
-    # col_5.pyplot(fig_a)
+
     col_5.markdown("""
-        <img src="https://images.unsplash.com/photo-1572402123736-c79526db405a" width="100%">
+        <img src="https://images.unsplash.com/photo-1527018601619-a508a2be00cd" width="100%">
         """, unsafe_allow_html=True)
-    col_5.caption('Insert a pic from unsplash')
+    col_5.caption('A Fuel Station')
+
 
     col_6.write("Select a commodity and a city to view its change in rate over the years, and compare it with the figure on the side")
     column_list=['Rice','Wheat','Atta (Wheat)','Gram Dal','Tur/Arhar Dal','Urad Dal','Moong Dal','Masoor Dal','Sugar',
@@ -402,18 +403,27 @@ with tabs[2]:
     st.pyplot(fig_10)
     st.caption('Change in price of '+column_list[6]+' has no relation to fuel prices.')
 
-    st.markdown("""
+    
+    col_2a,col_2b=st.columns(2)
+    col_2a.markdown("""
+        <img src="https://media.istockphoto.com/photos/pile-mung-dal-or-moong-dal-a-lot-of-with-copy-space-for-text-concept-picture-id931337404" width="100%">
+        """, unsafe_allow_html=True)
+    col_2a.caption('Moong Dal')
+    col_2b.markdown("""
     Hence, fuel prices are not a major factor in deciding the price of commodities, according to the data, 
     and it is mostly oils for some strange reason connnected to fuel prices in India. Let us now look back at our hypothesis 
-
+    """)
+    
+    
+    st.markdown("""
     #### Reviewing our Hypothesis:
     1. Fuel prices have increase, and so is the cost of essential commodities. They do share a common trend, but do not cause each other. As they say, " Correlation does not imply causation"
     2. Statement 2 is not completely True, and is most likely false. The data goes agaist pre conceived notion that fuel prices increases the cost of goods, but it seems like it doesn't, atleast accoring to the data. 
+    """)
 
+    st.markdown("""
     There is little to no provable relation between fuel prices and commodities. Some of the similarities we saw amounts to
-    just a coincidence, due to the pandemic. We will look at pandemic specifically in the next Question (Question 3)
-    
-    
+    just a coincidence, due to the pandemic. We will look at pandemic specifically in the next Question (Question 3)  
     
     """)
 
@@ -429,6 +439,13 @@ with tabs[3]:
     
     """)
     
+    st.markdown("""
+    <img src="https://images.unsplash.com/photo-1584483766114-2cea6facdf57" width="100%">
+    """, unsafe_allow_html=True)
+    st.caption('COVID-19')
+    
+    
+
     #df_month.head()
 
     #make input for choosing the city and commodity
@@ -500,14 +517,21 @@ with tabs[3]:
     st.pyplot(fig_12)
     st.caption('Variation of Prices in Lucknow City for during the pre and post COVID eras')
 
+    col_3a, col_3b=st.columns(2)
 
-    st.markdown("""
+    col_3b.markdown("""
+    <img src="https://images.unsplash.com/photo-1531501824979-4813e568563e" width="100%">""", unsafe_allow_html=True)
+    col_3b.caption('Sunflowers')
+    
+    col_3a.markdown("""
     These results show that like what we saw in question 2, oils are the main culprit for the high rates duing the covid era. 
     Another interesting find is that "Masoor Dal", whose value seem to have skyrocketed after 2020. We can hence conclude our question
     from the Section 2, and conclude that the price increase is not fuel dependent, but was primarily due to the issues caused by the
     pandemic.
-
-
+    
+    """)
+    st.markdown("""
+    
     #### Reviewing my Hypothesis:
     1. There is certainly inflation, but it does have seem to have affected certain products like cooking oils and Masoor Dal.
     2. Not all products have record High inflation. Some products have come down in cost. This particualry seems the case due to high costs in the start of 2019, which has then subsided after a sudden shock in these 2 years
@@ -515,8 +539,8 @@ with tabs[3]:
 
 with tabs[4]:
     st.header('Question 4')
-    st.info("""**Which food item has the highest variation of cost beteen cities on average? Did it increase over the years, or is it getting smaller? To answer the
-    question, let us compare the yearly avarage prices of commodities for the last 8 years**""")
+    st.info("""**Which food item has the highest variation of cost beteen cities on average? Did it increase over the years, or is it getting smaller? Also, Which commodity has increased in price by a lot? 
+    To answer the question, let us compare the yearly avarage prices of commodities for the last 8 years**""")
 
 
     st.markdown("""
@@ -524,18 +548,7 @@ with tabs[4]:
     
     
     """)
-    # This below code is already run and is converted to csv file.
-    # yearly_std_dev=pd.DataFrame()
-    # for i in range(1,23):
-    #     commodity=column_list[i]
-    #     df_yearly=df.groupby([pd.PeriodIndex(df['Date'], freq="Y"),'City'])[commodity].mean()
-    #     df_yearly=pd.DataFrame(df_yearly)
-    #     df_yearly=df_yearly.reset_index()
-    #     l1=[]
-    #     for year in range(2014,2023):
-    #         year_str=str(year)
-    #         l1.append(df_yearly[df_yearly['Date']==year_str][commodity].std())
-    #     yearly_std_dev[commodity]=l1
+    
     
     yearly_std_dev=pd.read_csv('data/yearly_std_dev.csv')
     
@@ -549,32 +562,59 @@ with tabs[4]:
 
 
 
-    ax_13.axhspan(17,40,facecolor='#d62728',alpha=0.4)
+    ax_13.axhspan(15,40,facecolor='#d62728',alpha=0.4)
     ax_13.axhspan(0,17,facecolor='#2ca02c',alpha=0.4)
     ax_13.legend(loc='center left', bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True)
     ax_13.set_title("Standard deviation of commodities between cities")
     st.pyplot(fig_13)
     st.caption('Change in price of commodities between cities over the years. ')
 
-    st.markdown("""
-    This chart shows the variation of the prices of commodities between the cities over the years. As
-    we can see, the prices can be categorised into 2 parts, where the standard deviatin is less than 17 and another from 17-40/
 
+    col_4c,col_4d=st.columns(2)
+    col_4c.markdown("""
+    <img src="https://images.unsplash.com/photo-1597003837092-f733b086d5aa" width="100%">""", unsafe_allow_html=True)
+    col_4c.caption('A palm tree')
+
+    col_4d.markdown("""
+    This chart shows the variation of the prices of commodities between the cities over the years. 
+    
+    As we can see, the prices can be categorised into 2 parts, where the standard deviation is less than 15 and another is 
+    from 15 to 40.
 
     Over the years, we can see that the deviation has started to reduce and has geared towards the under 20 mark.
-    
     The culprit is again Oils in this case. Seems like Tea prices vary a lot, being the outlier in the case.
+        
+    """)
+
+    st.subheader(' Variation in prices over the years')
+    st.markdown("""
+    Now, lets look at the actual increase in prices of commodities, and calcualte which is the 
+    one that increased in price by al lot from 2014 to 2022.
     
     
     """)
+    diff_list=pd.read_csv('data/diff_list.csv')
+    diff_list=diff_list.sort_values('Increase Percentage')
+
+    #metrics Plot
+    col_4a,col_4b=st.columns(2)
+
+    col_4a.metric("Lowest Increase",diff_list.iloc[0]['Commodity'],str(round(diff_list.iloc[0]['Increase Percentage'],2))+"%")
+    col_4b.metric("Highest Increase",diff_list.iloc[-1]['Commodity'],str(round(diff_list.iloc[-1]['Increase Percentage'],2))+"%")
 
 
-
-    images=("""
-
-    <h1> Image </h1>
-    <img src="https://images.unsplash.com/photo-1560579183-61c3f4596a85" width="200" height="200">
+    #increase percentage plots
+    fig14, ax14 =plt.subplots()
     
+    ax14.barh(diff_list['Commodity'],diff_list['Increase Percentage'])
+
+    ax14.set_title('Commodities and their Price Increase over 8 years')
+    #ax_12.set_xticklabels(labels=temp_inflation_rates['commodity'].tolist(),rotation=90)
+    ax14.set_xlabel("Increase Percentage")
+    st.pyplot(fig14)
+    #st.caption('Variation of Prices in Lucknow City for during the pre and post COVID eras')
+
+    st.markdown("""
+    As expected, oils are the major culprit, and have had the higest increase over the years.   
     """)
-    st.markdown(images, unsafe_allow_html=True)
 
