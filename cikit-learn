@@ -1,0 +1,47 @@
+[33mcommit fecb5b548cf6066d65a0f7cbf775d39a57055c06[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Mon Sep 5 16:07:03 2022 +0530
+
+    completed question 4 part 2 and addded images
+
+[33mcommit 9fcb17819bbc435f242b8dad3ecc8fa65104c54f[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Fri Sep 2 12:03:04 2022 +0530
+
+    Added favicon
+
+[33mcommit 02568e1d39ac35d584bf4cd7ab4e1bcc521cbdd3[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Fri Sep 2 11:35:18 2022 +0530
+
+    Modified extraction tab
+
+[33mcommit a81bbf16826b72747ecc9db703a38a375806c44f[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Tue Aug 30 18:28:19 2022 +0530
+
+    Commit to GitHub
+
+[33mcommit c60f764ee4bc317e4fe46794e658f2e437e64a57[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Mon Aug 15 14:21:47 2022 +0530
+
+    Created folder structure and imputed missing values for EDA
+
+[33mcommit 622f2fde67405e2a3b4bcc3485bdb88d0067ab70[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Fri Aug 12 10:11:36 2022 +0530
+
+    added price of petrol for analysis
+
+[33mcommit 86487b845ee3ae2dd61ccadf353665681360f0e5[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Thu Aug 11 12:20:48 2022 +0530
+
+    Darts eda init commit
+
+[33mcommit 9ae804eb64a947dca77b58ad0efb1ef5460befa8[m
+Author: aadityarock2000 <aadityaparthasarathy@gmail.com>
+Date:   Tue Aug 9 13:21:02 2022 +0530
+
+    Initial commit
